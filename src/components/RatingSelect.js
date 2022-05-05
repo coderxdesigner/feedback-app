@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-const RatingSelect = () => {
+const RatingSelect = ({ select }) => {
   const [selected, setSelected] = useState(10)
   const handleChange = e => {
     setSelected(+e.currentTarget.value)
+    select(+e.currentTarget.value)
   }
   return (
     <ul className='rating'>

@@ -13,11 +13,14 @@ const App = () => {
       setFeedback(feedback.filter(item => item.id !== id))
     }
   }
+  const addFeedback = newFeedback => {
+    console.log(newFeedback)
+  }
   return (
     <div>
       <Header></Header>
       <div className='container'>
-        <FeedbackForm />
+        <FeedbackForm handleAdd={addFeedback} />
         <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
       </div>
