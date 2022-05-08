@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Header from './Header'
+import About from '../pages/About'
 import FeedbackList from './FeedbackList'
 import FeedbackData from '../data/FeebackData'
 import FeedbackStats from './FeedbackStats'
@@ -26,6 +27,7 @@ const App = () => {
         <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
       </div>
+      <About />
     </div>
   )
 }
