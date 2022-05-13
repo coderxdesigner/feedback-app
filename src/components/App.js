@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './Header'
 import About from '../pages/About'
 import FeedbackList from './FeedbackList'
 import FeedbackData from '../data/FeebackData'
 import FeedbackStats from './FeedbackStats'
 import FeedbackForm from './FeedbackForm'
+import AboutLinkIcon from './AboutLinkIcon'
 
 //need to add the data in
 const App = () => {
@@ -20,15 +22,26 @@ const App = () => {
     setFeedback([newFeedback, ...feedback])
   }
   return (
-    <div>
+    <Router>
       <Header></Header>
       <div className='container'>
-        <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStats feedback={feedback} />
-        <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
+        <Routes>
+          <Route
+            exact
+            path='/'
+            element={
+              <>
+                <FeedbackForm handleAdd={addFeedback} />
+                <FeedbackStats feedback={feedback} />
+                <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
+              </>
+            }
+          />
+          <Route path='/about' element={<About />}></Route>
+        </Routes>
+        <AboutLinkIcon />
       </div>
-      <About />
-    </div>
+    </Router>
   )
 }
 
